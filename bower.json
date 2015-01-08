@@ -1,0 +1,23 @@
+{
+  "name": "hisaab",
+  "version": "0.0.0",
+  "authors": [
+    "Abhishek <abhidevmumbai@gmail.com>"
+  ],
+  "description": "Expense calculation app",
+  "main": "index.html",
+  "keywords": [
+    "hisaab",
+    "expenses"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.5.2"
+  }
+}
