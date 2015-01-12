@@ -1,0 +1,37 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<polymer-element name="cal-expenses">
+	<template>
+		<app-globals id="globals"></app-globals>
+		<div>
+			<label>Total Expense: </label>
+		    <input type="text" id="totalExpenseInput" value="{{amount}}" required />
+		    <button on-click="{{calExpense}}">Calculate</button>
+		</div>
+	</template>
+
+	<script type="text/javascript">
+		Polymer({
+			amount: 0,
+			calExpense: function () {
+				console.log(this.$.globals.ppl);				
+				var totalMembers = this.$.globals.ppl.length,
+					totalExpenseInput = this.$.totalExpenseInput;
+				console.log(totalMembers);
+				if (!totalMembers) {
+					alert('Please add members');
+					return;
+				}
+				if (totalExpenseInput.checkValidity) {
+					this.amount = totalExpenseInput.value ? totalExpenseInput.value : 0;
+				}
+
+				// if (amount) {
+				// 	this.ppl.push(name);
+				// }
+				// this.members = this.ppl.join(', ');
+				// this.$.nameInput.value = '';
+			}
+		});
+	</script>
+</polymer-element>
