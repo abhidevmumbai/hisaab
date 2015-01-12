@@ -1,0 +1,55 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<polymer-element name="add-ppl">
+	<template>
+		<app-globals id="globals"></app-globals>
+		<div>
+		    <label>Name
+		    	<input type="text" id="nameInput" placeholder="Name here..." required />
+		    </label>
+		    <label>Amount
+		    	<input type="number" id="amtInput" value="0" required />
+		    </label>
+		    <button on-click="{{addMember}}">Add</button>
+		</div>
+		<h4>Added members</h4>
+		<template repeat="{{member, i in members}}">
+			<div id="{{i}}">{{member.name}} paid {{member.paid}} <button on-click="{{delMember}}" data-id={{i}}>x</button></div>
+		</template>
+	</template>
+
+	<script type="text/javascript">
+		Polymer({
+			addMember: function () {
+				var ppl = this.$.globals.ppl;
+
+				var name = this.$.nameInput,
+					amt = this.$.amtInput;
+
+				if (name.value && amt.value) {
+					ppl.push({
+						name: name.value,
+						paid: amt.value,
+						owes: 0
+					});
+				} else {
+					alert('Please enter Name and Amount...');
+				}
+				// this.updatePpl();
+				this.members = ppl;
+				console.log(this.members);
+				this.$.nameInput.value = '';
+			},
+
+			delMember: function (ev) {
+				var index = ev.target.attributes['data-id'].value,
+					ppl = this.$.globals.ppl;
+				if (index > -1) {
+					ppl = ppl.splice(index, 1);
+				}
+				// console.log(ev.target.attributes['data-id'].value);
+			} 
+
+		});
+	</script>
+</polymer-element>

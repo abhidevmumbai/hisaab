@@ -1,0 +1,15 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<polymer-element name="app-globals">
+	<script type="text/javascript">
+		(function () {
+			var ppl = [];
+			Polymer({
+				ready: function () {
+					this.ppl = ppl;
+					this.members = this.ppl.join(', ');
+				}
+			});
+		})();
+	</script>
+</polymer-element>
